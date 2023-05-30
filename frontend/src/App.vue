@@ -2,9 +2,17 @@
   <div class="root">
     <div class="center-card">
       <NoteBlock/>
-      <TimeUnit/>
+      <TimeUnit @end="updateURL"/>
       <div class="end-block">
-        Our fairwell is on the second of June, 2023, I bid my goodbyes to Amrita, my memories and the great time I had here (Not the college, the people were fun).
+        Our fairwell is on the second of June, 2023, I bid my goodbyes to Amrita, my memories and the great time I had
+        here (Not the college, the people were fun).
+      </div>
+      <br>
+      <div class="end-block" v-if="!showURL">
+        Make sure you stick around till the end of this count down, I have a surprise for you :)
+      </div>
+      <div class="end-block" v-else>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Click on tis URL, thank me later :)</a>
       </div>
     </div>
   </div>
@@ -19,6 +27,16 @@ export default {
   components: {
     NoteBlock,
     TimeUnit,
+  },
+  methods: {
+    updateURL() {
+      this.showURL = true;
+    }
+  },
+  data() {
+    return {
+      showURL: false
+    }
   }
 }
 </script>
@@ -37,7 +55,7 @@ export default {
   box-sizing: border-box;
 }
 
-.root{
+.root {
   width: 100vw;
   height: 100vh;
   display: flex;

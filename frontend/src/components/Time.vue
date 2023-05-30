@@ -1,6 +1,6 @@
 <template>
   <div class="time">
-    <TimeBlock :time="dats" unit="Days"/>
+    <TimeBlock :time="days" unit="Days"/>
     <TimeBlock :time="hours" unit="Hours"/>
     <TimeBlock :time="minutes" unit="Minutes"/>
     <TimeBlock :time="seconds" unit="Seconds"/>
@@ -28,15 +28,37 @@ export default {
       // Calculate the time difference
       const timeDifference = targetDateIST - new Date(currentTimeIST);
 
-      this.dats = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      this.days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
       this.hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       this.minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
       this.seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-    }
+
+      //set time to 0
+      this.days = this.days < 0 ? 0 : this.days;
+      this.hours = this.hours < 0 ? 0 : this.hours;
+      this.minutes = this.minutes < 0 ? 0 : this.minutes;
+      this.seconds = this.seconds < 0 ? 0 : this.seconds;
+
+      //if time is 0, start the confetti
+      if (this.days === 0 && this.hours === 0 && this.minutes === 0 && this.seconds === 0 && !this.isConfetti) {
+        this.isConfetti = true;
+        this.start();
+        this.$emit('end');
+        alert('Time is up, click on the link below to see the surprise :)')
+      }
+    },
+    start() {
+      this.$confetti.start();
+    },
+
+    stop() {
+      this.$confetti.stop();
+    },
   },
   data() {
     return {
-      dats: 0,
+      isConfetti: false,
+      days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0
