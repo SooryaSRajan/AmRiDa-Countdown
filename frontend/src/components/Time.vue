@@ -77,7 +77,6 @@ export default {
   height: 100%;
 }
 
-/*clear first and last margins*/
 .time-block:first-child {
   margin-left: 0;
 }

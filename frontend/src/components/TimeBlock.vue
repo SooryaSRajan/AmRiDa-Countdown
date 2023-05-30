@@ -53,4 +53,32 @@ export default {
   flex: 1;
 }
 
+@media (max-width: 768px) {
+  .time-block {
+    width: 80px;
+    height: 80px;
+    margin: 0 10px 30px;
+  }
+  .time {
+    font-size: 20px;
+  }
+  .unit {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-block {
+    width: 60px;
+    height: 60px;
+    margin: 0 0 30px;
+  }
+  .time {
+    font-size: 15px;
+  }
+  .unit {
+    font-size: 8px;
+  }
+}
+
 </style>

@@ -44,4 +44,13 @@ export default {
   margin-bottom: 20px;
 }
 
+@media (max-width: 768px) {
+  .note {
+    font-size: 20px;
+  }
+  .note-block {
+    font-size: 13px;
+  }
+}
+
 </style>

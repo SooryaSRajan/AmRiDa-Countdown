@@ -53,6 +53,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 .root {
@@ -61,6 +62,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: auto;
 }
 
 .center-card {
@@ -74,5 +76,22 @@ export default {
   flex-direction: column;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media (max-width: 700px) {
+  .center-card {
+    padding: 5px;
+    width: 100%;
+  }
+}
+
+@media (max-height: 500px) {
+  .root {
+    display: block;
+  }
+  .center-card {
+    padding: 5px;
+    width: 100%;
+  }
 }
 </style>
